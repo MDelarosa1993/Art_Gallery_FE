@@ -25,8 +25,14 @@ const LoginPage = () => {
 
         const data = await response.json();
         console.log('Data:', data);
+        const userData = {
+          id: data.user.data.id,
+          name: data.user.data.attributes.name,
+          email: data.user.data.attributes.email,
+          role: data.user.data.attributes.role,
+        };
         
-        login(data.user, data.token);
+        login(userData, data.token);
         const role = data.user.data.attributes.role;
 
         if (role === 'admin') {

@@ -27,15 +27,15 @@ const SignUp = () => {
                 throw new Error(errorData.errors || 'Sign-Up Failed');
             }
             const data = await response.json();
-            login(data.user, data.token);
-            
-            if (role === 'admin') {
-                navigate('/admin');
-            } else if (role === 'artist') {
-                navigate('/artworks');
-            } else {
-                navigate('/orders');
-            }
+            const userData = {
+              id: data.user.data.id,
+              name: data.user.data.attributes.name,
+              email: data.user.data.attributes.email,
+              role: data.user.data.attributes.role,
+            };
+            console.log(data)
+            login(userData, data.token);
+            navigate("/")
         } catch (error) {
             setError(error.message);
         }

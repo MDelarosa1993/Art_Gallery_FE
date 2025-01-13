@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useUserContext } from "../context/UserContext";
-
+import { Link, useNavigate } from "react-router-dom";
 const Artwork = () => {
-  const { user, token } = useUserContext(); // Get the JWT token from context
-  const [artworks, setArtworks] = useState([]); // State to store all artworks
-  const [error, setError] = useState(null); // State to handle errors
+  const { user, token, logout } = useUserContext();
+  const [artworks, setArtworks] = useState([]);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArtworks = async () => {
@@ -27,22 +28,51 @@ const Artwork = () => {
       }
     };
     fetchArtworks();
-  }, [token]);
+  }, [user, token]);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/")
+  }
 
   if (error) return <div>Error: {error}</div>;
 
-  return (
-    <div>
-      <h1>My Artworks</h1>
-      <ul>
-        {artworks.map((artwork) => (
-          <li key={artwork.id}>
-            <h2>{artwork.title}</h2>
-            <p>{artwork.description}</p>
-            <p>Price: ${artwork.price}</p>
-          </li>
-        ))}
-      </ul>
+return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="w-full max-w-3xl bg-white rounded-lg shadow-md p-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-gray-800">My Masterpieces</h1>
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+          >
+            Logout
+          </button>
+        </div>
+        <div className="mb-6 text-center">
+          <Link to="/create-artwork">
+            <button className="bg-blue-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Feeling Inspired
+            </button>
+          </Link>
+        </div>
+        <ul className="space-y-6">
+          {artworks.map((artwork) => (
+            <li
+              key={artwork.id}
+              className="p-4 border border-gray-300 rounded-lg shadow-sm"
+            >
+              <h2 className="text-lg font-semibold text-gray-700">
+                {artwork.title}
+              </h2>
+              <p className="text-sm text-gray-600">
+                Description: {artwork.description}
+              </p>
+              <p className="text-sm text-gray-600">Price: ${artwork.price}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
