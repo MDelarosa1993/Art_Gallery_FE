@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useUserContext } from "./context/UserContext";
 import SignUp from "./components/SignUp";
 import Artwork from "./components/Artwork";
+import NewArtwork from "./components/NewArtwork";
 
 function App() {
   const { isLoggedIn } = useUserContext();
@@ -14,6 +15,7 @@ function App() {
         {isLoggedIn && (
           <>
             <Route path="/artworks" element={<Artwork />} />
+            <Route path="/create-artwork" element={<NewArtwork />} />
             {/* <Route path="/admin" element={<AdminPage />} /> */}
           </>
         )}
