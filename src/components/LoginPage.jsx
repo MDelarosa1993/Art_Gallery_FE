@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const LoginPage = () => {
@@ -88,6 +88,9 @@ return (
             <p className="text-sm text-red-600 text-center mt-2">{error}</p>
           )}
         </form>
+        <p className="text-sm text-gray-600 text-center mt-4">
+          Don’t have an account? <Link to="/signup" className="text-blue-500 hover:underline">Sign Up</Link>
+        </p>
       </div>
     </div>
   );
