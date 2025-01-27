@@ -40,7 +40,7 @@ const LoginPage = () => {
         } else if (role === 'artist') {
             navigate('/artworks');
         } else {
-            navigate('/orders');
+            navigate('/artwork-menu');
         }
         } catch (error) {
             setError('Login failed: ' + error.message)

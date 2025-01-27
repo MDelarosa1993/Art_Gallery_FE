@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext} from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext(null);
 
@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const login = (userData, userToken) => {
         setUser(userData);
@@ -18,6 +19,7 @@ const UserProvider = ({ children }) => {
         setUser(null);
         setToken(null);
         setIsLoggedIn(false);
+        navigate("/")
     };
     
     const value = {
