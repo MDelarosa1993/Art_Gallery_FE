@@ -30,11 +30,6 @@ const Artwork = () => {
     fetchArtworks();
   }, [user, token]);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/")
-  }
-
   if (error) return <div>Error: {error}</div>;
 
 return (
@@ -43,7 +38,7 @@ return (
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">My Masterpieces</h1>
           <button
-            onClick={handleLogout}
+            onClick={logout}
             className="bg-red-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
           >
             Logout
