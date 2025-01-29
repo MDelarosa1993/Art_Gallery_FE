@@ -5,13 +5,30 @@ const CartContext = createContext()
 
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-
+    
     const addToCart = (artwork) => {
-        setCart((prevCart) => [...prevCart, artwork])
+        setCart((prevCart) => {
+            const existingCart = prevCart.find((item) => item.id === artwork.id);
+            if(existingCart) {
+                return prevCart.map((item) => 
+                item.id === artwork.id
+            ? { ...item, quantity: item.quantity + 1}
+            : item
+        )
+            } else {
+                return [...prevCart, { ...artwork, quantity: 1}]
+            }
+        })
     }
 
     const removeFromCart = (id) => {
-        setCart((prevCart) => prevCart.filter((artwork) => artwork.id !== id))
+        setCart((prevCart) =>
+            prevCart
+                .map((item) =>
+                item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+                )
+                .filter((item) => item.quantity > 0)
+        );
     }
 
     const value = {
