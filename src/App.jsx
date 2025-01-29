@@ -5,6 +5,7 @@ import SignUp from "./components/SignUp";
 import Artwork from "./components/Artwork";
 import NewArtwork from "./components/NewArtwork";
 import BuyerDashboard from "./components/BuyerDashboard";
+import Checkout from "./components/Checkout";
 
 function App() {
   const { isLoggedIn } = useUserContext();
@@ -18,6 +19,7 @@ function App() {
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/create-artwork" element={<NewArtwork />} />
             <Route path="/artwork-menu" element={<BuyerDashboard />} />
+            <Route path="/checkout" element={<Checkout />} />
           </>
         )}
       </Routes>
