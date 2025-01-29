@@ -20,7 +20,6 @@ function App() {
             <Route path="/artwork-menu" element={<BuyerDashboard />} />
           </>
         )}
-        {/* {!isLoggedIn && <Route path="*" element={<Navigate to="/" />} />} */}
       </Routes>
   );
 }
