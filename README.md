@@ -1,74 +1,120 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# **🎨 Art Gallery**
+### **A full-stack web application for buying and selling artwork**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **📌 Overview**
+The **Art Gallery** is a **React and Tailwind CSS** powered web application that allows **artists** to showcase and sell their artwork, while **buyers** can browse, add items to their cart, and complete purchases. The application features **JWT-based authentication**, a **user dashboard**, and a **shopping cart system** for easy transactions.
 
-## Available Scripts
+## **🚀 Features**
+✅ **User Authentication (JWT)** – Secure login and signup system.  
+✅ **Role-Based Access** – Different features for **artists**, **buyers**, and **admins**.  
+✅ **Create & Manage Artworks** – Artists can upload and list their artwork for sale.  
+✅ **Shopping Cart System** – Buyers can add items to their cart and proceed to checkout.  
+✅ **Dynamic Dashboard** – Displays user information and purchased artwork.  
+✅ **RESTful API Integration** – Connects with a **Ruby on Rails backend**.  
+✅ **Responsive UI with Tailwind CSS** – Mobile-friendly and optimized for all screen sizes.  
 
-In the project directory, you can run:
+## **🛠️ Tech Stack**
+### **Frontend (React & Tailwind CSS)**
+- **React.js** – Handles UI components and routing.
+- **React Router** – Enables seamless page navigation.
+- **Context API** – Manages global user authentication and cart state.
+- **Heroicons** – Provides clean icons for UI elements.
+- **Tailwind CSS** – Ensures a modern, responsive design.
 
-### `npm start`
+### **Backend (Ruby on Rails & PostgreSQL)**
+- **Ruby on Rails API** – Manages user authentication, artwork listings, and transactions.
+- **PostgreSQL** – Database to store user and artwork details.
+- **JWT Authentication** – Secures user sessions and data access.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **📂 Project Structure**
+```
+📦 Art-Gallery
+ ┣ 📂 src
+ ┃ ┣ 📂 components
+ ┃ ┃ ┣ 📜 Artwork.js           # Displays user-specific artworks
+ ┃ ┃ ┣ 📜 BuyerDashboard.js    # Shopping and cart system
+ ┃ ┃ ┣ 📜 Checkout.js          # Handles artwork purchases
+ ┃ ┃ ┣ 📜 LoginPage.js         # User authentication page
+ ┃ ┃ ┣ 📜 NewArtwork.js        # Form for adding new artworks
+ ┃ ┃ ┗ 📜 SignUp.js            # User registration form
+ ┃ ┣ 📂 context
+ ┃ ┃ ┣ 📜 UserContext.js       # Handles authentication state
+ ┃ ┃ ┗ 📜 CartContext.js       # Manages shopping cart state
+ ┃ ┣ 📜 App.js                 # Main component for routing
+ ┃ ┣ 📜 index.js               # Application entry point
+ ┃ ┗ 📜 index.css              # Global styles
+ ┣ 📜 package.json             # Project dependencies
+ ┣ 📜 README.md                # Documentation
+ ┗ 📜 .gitignore               # Git ignored files
+```
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **📌 Installation & Setup**
+### **1️⃣ Clone the Repository**
+```bash
+git clone https://github.com/MDelarosa1993/Art_Gallery_FE.git
+cd art_gallery_fe
+```
 
-### `npm run build`
+### **2️⃣ Install Dependencies**
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **3️⃣ Start the Development Server**
+```bash
+npm start
+```
+_This will start the React frontend on **http://localhost:3001**._
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **4️⃣ Backend Setup (Rails API)**
+```bash
+- Clone and set up the backend **Ruby on Rails API** from your backend repo.
+- git clone https://github.com/MDelarosa1993/Art_Gallery.git
+cd Art_gallery
+- Run **`rails s`** to start the server at **http://localhost:3000**.
+```
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **📌 Usage Guide**
+### **🎨 Artist Features**
+- Sign up or log in.
+- Upload new artwork (title, description, price).
+- View and manage personal artwork listings.
 
-### `npm run eject`
+### **🛍️ Buyer Features**
+- Browse available artworks.
+- Add items to cart and manage quantity.
+- Complete purchases via checkout.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **🔑 Authentication**
+- Users sign up with **name, email, password, and role (Artist/Buyer)**.
+- Login grants access to role-specific features.
+- JWT ensures **secure API requests**.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **📌 API Endpoints**
+| **Method** | **Endpoint** | **Description** |
+|------------|-------------|----------------|
+| `POST` | `/api/v1/auth` | User Login |
+| `POST` | `/api/v1/users` | User Signup |
+| `GET` | `/api/v1/users/:id/artworks` | Fetch artworks by user |
+| `POST` | `/api/v1/users/:id/artworks` | Create new artwork |
+| `GET` | `/api/v1/artworks/browse` | Fetch all available artworks |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## **📌 Future Enhancements**
+🔹 **Stripe Payment Integration** – Secure online payments.  
+🔹 **Artist Profile Pages** – Showcase all artworks from a single artist.  
+🔹 **Admin Dashboard** – Manage users and artwork approvals.  
+🔹 **Image Uploads** – Allow artists to upload artwork images.  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Art_Gallery_FE
->>>>>>> bb3c3cbeacae122f0cdf414437406a36738cb725
+## **📌 License**
+This project is **MIT licensed**.
